@@ -1,6 +1,6 @@
 {
   "name": "@pandada8/opencode-axonhub",
-  "version": "0.2.5",
+  "version": "0.3.0",
   "description": "OpenCode plugin for discovering AxonHub models",
   "type": "module",
   "license": "MIT",
@@ -16,6 +16,7 @@
   ],
   "files": [
     "src",
+    "server.ts",
     "README.md",
     "package.json"
   ],
@@ -29,10 +30,10 @@
   },
   "types": "./src/index.ts",
   "peerDependencies": {
-    "@opencode-ai/plugin": "*",
-    "@opencode-ai/sdk": "*"
+    "@opencode/plugin": "*"
   },
   "devDependencies": {
+    "@opencode/plugin": "^2.0.14",
     "@types/node": "^22.18.10",
     "typescript": "^5.9.3"
   },
