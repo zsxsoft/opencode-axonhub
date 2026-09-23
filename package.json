@@ -1,12 +1,12 @@
 {
-  "name": "@pandada8/opencode-axonhub",
-  "version": "0.3.0",
-  "description": "OpenCode plugin for discovering AxonHub models",
+  "name": "opencode-v2-axonhub",
+  "version": "0.3.1",
+  "description": "OpenCode V2 plugin for discovering AxonHub models",
   "type": "module",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/pandada8/opencode-axonhub"
+    "url": "https://github.com/zsxsoft/opencode-axonhub"
   },
   "keywords": [
     "opencode",
@@ -18,6 +18,7 @@
     "src",
     "server.ts",
     "README.md",
+    "LICENSE",
     "package.json"
   ],
   "publishConfig": {

@@ -3,10 +3,12 @@ name: Publish
 on:
   push:
     tags:
-      - 'v*'
+      - "v*.*.*"
   workflow_dispatch:
 
 permissions:
+  # OIDC token for npm trusted publishing; the CLI picks it up automatically
+  # and signs provenance without a stored npm token.
   id-token: write
   contents: read
 
@@ -14,15 +16,20 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
-
-      - uses: actions/setup-node@v6
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: '24'
-          registry-url: 'https://registry.npmjs.org'
-
+          node-version: 24
+          registry-url: https://registry.npmjs.org
+      # npm CLI >= 11.5.1 is required for trusted publishing.
+      - run: npm install -g npm@latest
       - run: npm ci
-
       - run: npm run check
-
-      - run: npm publish --access public
+      - name: Verify tag matches package version
+        if: startsWith(github.ref, 'refs/tags/')
+        run: |
+          tag="${GITHUB_REF_NAME#v}"
+          pkg="$(node -p "require('./package.json').version")"
+          [ "$tag" = "$pkg" ] || { echo "tag $tag != package.json version $pkg"; exit 1; }
+      - name: Publish to npm
+        run: npm publish --access public

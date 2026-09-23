@@ -1,8 +1,8 @@
-# @pandada8/opencode-axonhub
+# opencode-v2-axonhub
 
 OpenCode **V2** plugin that discovers AxonHub models from `/v1/models` and `/v1/models?include=all`, merges both responses, and exposes them as the `axonhub` provider.
 
-This is the V2 port of the plugin. OpenCode V2 loads plugins through its own module contract (`{ id, setup }`), calls plugin domains directly, and ships provider implementations in-process, so the V1 hook shape (`{ id, server }`, `config`/`provider` hooks, `@ai-sdk/*` packages) is no longer used. The V1 implementation lives on `master`; this one is on `feat/v2`.
+This is the V2 port of the plugin. OpenCode V2 loads plugins through its own module contract (`{ id, setup }`), calls plugin domains directly, and ships provider implementations in-process, so the V1 hook shape (`{ id, server }`, `config`/`provider` hooks, `@ai-sdk/*` packages) is no longer used. The V1 implementation is published as `@pandada8/opencode-axonhub` and lives on `master`; this one is on `feat/v2`.
 
 ## Usage
 
@@ -10,7 +10,7 @@ This is the V2 port of the plugin. OpenCode V2 loads plugins through its own mod
 {
   "plugins": [
     {
-      "package": "@pandada8/opencode-axonhub",
+      "package": "opencode-v2-axonhub",
       "options": { "baseURL": "https://your-axonhub.example.com" }
     }
   ]
